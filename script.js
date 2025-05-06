@@ -12,6 +12,7 @@ const cardImages = [
   'images/img10.png',
   'images/img11.png',
   'images/img12.png'
+  
 ];
 let cardsArray = [...cardImages, ...cardImages];
 let firstCard, secondCard;
