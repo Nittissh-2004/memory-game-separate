@@ -1,66 +1,83 @@
-/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
 }
 
-h1 {
-    margin-top: 20px;
-    color: #333;
+.game-container {
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
 }
 
 #game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    grid-gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  gap: 10px;
+  justify-content: center;
 }
 
 .card {
-    width: 100px;
-    height: 100px;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2em;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-.card.flipped {
-    background-color: #fff;
-    color: #333;
-    transform: scale(1.1);
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
-.card.matched {
-    background-color: #4CAF50;
-    color: white;
+.card.flip .card-inner {
+  transform: rotateY(180deg);
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid #ccc;
+  font-size: 2rem;
 }
 
-button:hover {
-    background-color: #45a049;
+.card-front {
+  background-color: #d1e0ff;
 }
 
-#game-info {
-    margin-top: 20px;
-    font-size: 18px;
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #ffffff;
+}
+
+.card-back img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+#restart-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
